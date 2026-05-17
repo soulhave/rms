@@ -11,7 +11,7 @@ Contém o plugin `rms` com skills e utilitários de uso geral.
 Dentro de qualquer sessão do Claude Code, rode:
 
 ```
-/plugin marketplace add ramonmendesbh/rms
+/plugin marketplace add soulhave/rms
 /plugin install rms@rms
 ```
 
@@ -22,7 +22,7 @@ Pronto. As skills ficam disponíveis com o prefixo `/rms:`.
 Você pode fixar a marketplace numa **tag** ou **branch**:
 
 ```
-/plugin marketplace add ramonmendesbh/rms#v0.1.0
+/plugin marketplace add soulhave/rms#v0.1.0
 /plugin install rms@rms
 ```
 
