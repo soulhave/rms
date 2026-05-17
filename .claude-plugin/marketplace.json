@@ -1,0 +1,13 @@
+{
+  "name": "rms",
+  "owner": {
+    "name": "Ramon Mendes"
+  },
+  "plugins": [
+    {
+      "name": "rms",
+      "source": "./",
+      "description": "Skills e utilitários pessoais do Ramon para o Claude Code"
+    }
+  ]
+}

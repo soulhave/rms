@@ -1,0 +1,8 @@
+{
+  "name": "rms",
+  "description": "Plugin pessoal do Ramon — skills e utilitários para o Claude Code",
+  "version": "0.1.0",
+  "author": {
+    "name": "Ramon Mendes"
+  }
+}
