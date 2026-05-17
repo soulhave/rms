@@ -8,14 +8,23 @@ Contém o plugin `rms` com skills e utilitários de uso geral.
 
 ## Instalação
 
-Dentro de qualquer sessão do Claude Code, rode:
+Dentro de qualquer sessão do Claude Code, rode em sequência:
 
 ```
 /plugin marketplace add soulhave/rms
 /plugin install rms@rms
+/reload-plugins
 ```
 
-Pronto. As skills ficam disponíveis com o prefixo `/rms:`.
+O `/reload-plugins` é necessário pra carregar as skills na sessão atual. Em sessões novas o reload é automático.
+
+Verifique com:
+
+```
+/plugin
+```
+
+Pronto. As skills ficam disponíveis com o prefixo `/rms:` (ex.: `/rms:ola`).
 
 ### Instalar uma versão específica
 
@@ -24,6 +33,7 @@ Você pode fixar a marketplace numa **tag** ou **branch**:
 ```
 /plugin marketplace add soulhave/rms#v0.1.0
 /plugin install rms@rms
+/reload-plugins
 ```
 
 > Pinning é feito no nível da marketplace, não do plugin individual.
@@ -35,6 +45,7 @@ Você pode fixar a marketplace numa **tag** ou **branch**:
 | Comando | Descrição |
 |---|---|
 | `/rms:ola [nome]` | Cumprimenta o usuário em português (skill de exemplo) |
+| `/rms:traduzir <idioma>` | Traduz conteúdo para o idioma alvo, preservando formatação |
 
 ---
 
@@ -78,7 +89,10 @@ rms/
 │   ├── marketplace.json     # lista os plugins desta marketplace
 │   └── plugin.json          # manifesto do plugin "rms"
 ├── skills/
-│   └── ola/SKILL.md         # skill de exemplo
+│   ├── ola/SKILL.md         # skill de exemplo
+│   └── traduzir/SKILL.md    # tradução de conteúdo
+├── .gitignore
+├── LICENSE
 └── README.md
 ```
 
@@ -86,17 +100,36 @@ rms/
 
 ## Desenvolvimento local
 
-Pra testar mudanças sem precisar dar push:
+Como este repo é uma **marketplace**, pra testar mudanças sem dar push você registra o diretório local como marketplace via `file://`.
 
-```bash
-claude --plugin-dir /caminho/para/rms
+Adicione em `~/.claude/settings.json`:
+
+```json
+{
+  "pluginMarketplaces": [
+    "file:///caminho/absoluto/para/rms"
+  ]
+}
 ```
 
-Dentro do Claude Code, depois de editar arquivos:
+Depois, na sessão do Claude Code:
 
 ```
+/plugin install rms@rms
 /reload-plugins
 ```
+
+A cada mudança em arquivos do plugin, rode `/reload-plugins` pra recarregar.
+
+### Onde o plugin é cacheado
+
+Plugins instalados ficam em:
+
+```
+~/.claude/plugins/cache/<marketplace>/<plugin>/<version>/
+```
+
+Útil pra inspecionar o que o Claude Code de fato carregou.
 
 ---
 
